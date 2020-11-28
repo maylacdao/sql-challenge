@@ -4,18 +4,15 @@
 
 CREATE TABLE "departments" (
     "dept_no" varchar   NOT NULL,
-    "dept_name" varchar   NOT NULL,
-    CONSTRAINT "pk_departments" PRIMARY KEY (
-        "dept_no"
-     )
+    "dept_name" varchar   NOT NULL
 );
 
-CREATE TABLE "departmentManager" (
+CREATE TABLE "dept_manager" (
     "dept_no" varchar   NOT NULL,
     "emp_no" varchar   NOT NULL
 );
 
-CREATE TABLE "departmentEmp" (
+CREATE TABLE "dept_emp" (
     "emp_no" varchar   NOT NULL,
     "dept_no" varchar   NOT NULL
 );
@@ -43,16 +40,16 @@ CREATE TABLE "employees" (
      )
 );
 
-ALTER TABLE "departmentManager" ADD CONSTRAINT "fk_departmentManager_dept_no" FOREIGN KEY("dept_no")
+ALTER TABLE "dept_manager" ADD CONSTRAINT "fk_dept_manager_dept_no" FOREIGN KEY("dept_no")
 REFERENCES "departments" ("dept_no");
 
-ALTER TABLE "departmentManager" ADD CONSTRAINT "fk_departmentManager_emp_no" FOREIGN KEY("emp_no")
+ALTER TABLE "dept_manager" ADD CONSTRAINT "fk_dept_manager_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "employees" ("emp_no");
 
-ALTER TABLE "departmentEmp" ADD CONSTRAINT "fk_departmentEmp_emp_no" FOREIGN KEY("emp_no")
+ALTER TABLE "dept_emp" ADD CONSTRAINT "fk_dept_emp_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "employees" ("emp_no");
 
-ALTER TABLE "departmentEmp" ADD CONSTRAINT "fk_departmentEmp_dept_no" FOREIGN KEY("dept_no")
+ALTER TABLE "dept_emp" ADD CONSTRAINT "fk_dept_emp_dept_no" FOREIGN KEY("dept_no")
 REFERENCES "departments" ("dept_no");
 
 ALTER TABLE "titles" ADD CONSTRAINT "fk_titles_title_id" FOREIGN KEY("title_id")
